@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models;
-use App\Models\Cv_bank;
+use App\Models\Cvbank;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ use App\Models\Cv_bank;
 Route::get('/', function () {
     return view('cv_bank', [
         'heading' => ' CV List',
-        'cv_list' => Cv_bank::all()
+        'cv_list' => Cvbank::all()
 
     ]);
 });
@@ -29,7 +29,7 @@ Route::get('/', function () {
 // Single CV
 Route::get('cv_bank/{id}',function($id){
     return view('cv', [
-        'list' => Cv_bank::find($id)
+        'list' => Cvbank::find($id)
     ]);
 
 });

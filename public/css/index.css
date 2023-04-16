@@ -1,0 +1,357 @@
+
+/* sub-header styling */
+.page-header-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.page-header-create-button {
+    border: #9ca5c4 1px solid;
+    height: 2em;
+}
+
+.page-header-btn-type {
+    border: none;
+    height: 100%;
+}
+
+.page-header-btn-type:hover {
+    background-color: #e2e5f0;
+}
+
+.page-header-btn-type a {
+    text-decoration: none;
+    color: #6f7a99;
+    width: 100%;
+    height: 100%;
+}
+
+/* table search styling */
+.search-row {
+    display: flex;
+    height: 2.4em;
+}
+
+.input-group-search {
+    border: 1px solid #9ca5c4;
+    display: flex;
+    width: 40%;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.input-group-btn-left-dropdown{
+    width: 15%;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.input-group-btn-left-dropdown button{
+    padding: .1em .5em;
+    border: none;   
+    height: 100%;
+    width: 100%;
+}
+
+.input-group-btn-left-dropdown button:hover {
+    background-color: #e2e5f0;
+}
+
+.input-group-search input {
+    border: none;
+    width: 65%;
+    border-left: #9ca5c4 1px solid;
+    border-right: #9ca5c4 1px solid;
+    padding: 0.1em .5em;
+}
+
+input:focus {
+    border: 1px solid #4e73df;
+    outline: none;
+}
+
+.input-group-btn-right-dropdown,
+.input-group-btn-right-search {
+    width: 10%;
+    height: 100%;
+}
+
+.input-group-btn-right-dropdown button,
+.input-group-btn-right-search button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: #6f7a99;
+}
+
+.input-group-btn-right-search button {
+    border-right: #9ca5c4 solid 1px;
+}
+.input-group-btn-right-dropdown button:hover,
+.input-group-btn-right-search button:hover {
+    background-color: #e2e5f0;
+}
+
+/* Table listing page styling */
+.account-list-table {
+    border-collapse: collapse;
+    margin: 2em 0;
+    text-transform: uppercase;
+    font-size: .9em;
+    min-width: 100%;
+    border-radius: 150px 150px 0 0;
+}
+
+.account-list-table thead tr {
+    text-align: left;
+    background-color: #4e73df;
+    color: white;
+    padding: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.account-list-table th,
+.account-list-table td {
+    padding: 15px 10px;
+}
+
+.account-list-table tbody tr {
+    border-bottom: 2px solid rgb(230, 241, 252);
+}
+
+.account-list-table tbody:nth-of-type(even) {
+    background-color: 2px solid rgb(54, 120, 185);
+}
+
+.account-list-table tbody tr:last-of-type {
+    border-bottom: 1px solid #4e73df;
+}
+
+.account-list-table tbody tr button {
+    border: .5px solid #9ca5c4;
+}
+
+.account-list-table tbody tr button:hover {
+    background-color: #e2e5f0;
+}
+
+.account-list-table tbody tr button:active {
+    transform: translateY(.1em);
+}
+
+ 
+/* new/create page styling*/
+
+/* .create-page-header {
+    border: 1px solid red;
+}
+
+.create-save-cancel-btn {
+    border: solid 1px red;
+} */
+
+.create-save-cancel-btn-ctn {
+    border: 1px solid #9ca5c4;
+    display: flex;
+    width: 14%;
+    height: 2.2em;
+}
+
+.create-save-cancel-btn-ctn .save-btn-ctn {
+    width: 35%;
+}
+
+.create-save-cancel-btn-ctn .cancel-btn-ctn {
+    width: 45%;
+}
+
+.create-save-cancel-btn-ctn .dropdown-btn-ctn {
+    width: 20%;
+    border-left: #9ca5c4 1px solid;
+}
+
+.create-save-cancel-btn-ctn .dropdown-btn {
+    color: #6f7a99;
+}
+
+.create-save-cancel-btn-ctn .dropdown-btn,
+.create-save-cancel-btn-ctn .cancel-btn,
+.create-save-cancel-btn-ctn .save-btn {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.create-save-cancel-btn-ctn .save-btn {
+    color: white;
+    background-color: #4e73df;
+    font-weight: bold;
+}
+
+.create-save-cancel-btn-ctn .save-btn:hover {
+    background-color: #2d55cc;
+}
+
+.create-save-cancel-btn-ctn .cancel-btn:hover,
+.create-save-cancel-btn-ctn .dropdown-btn:hover {
+    background-color: #e2e5f0;
+}
+
+.create-page-body-container {
+    /* border: solid yellow 1px; */
+    margin: 1em .2em;
+    display: flex;
+    align-items: flex-start;
+}
+
+.customer-details-form {
+    /* border: 1px solid green; */
+    width: 80%;
+    background-color: white;
+
+    margin: auto;
+    padding: .8em;
+}
+
+.assigned-user-and-teams-form {
+    /* border: 1px solid blue; */
+    width: 35%;
+    background-color: white;
+    padding: .8em;
+}
+
+.overview-input-container,
+.contact-details-form,
+.assigned-and-team-container {
+    /* border: 1px dashed black; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.input-name-container label span,
+.opportunity-amount-input-container label span {
+    color: red;
+}
+
+.input-name-container,
+.email-input-container,
+.phone-input-container,
+.account-input-container,
+.website-input-container,
+.address-input-container,
+.status-input-container,
+.industry-type-input-container,
+.description-input-container,
+.assigned-user-container,
+.title-input-container,
+.source-input-container,
+.opportunity-amount-input-container,
+.probability-input-container,
+.closing-date-input-container,
+.contact-person-input-container {
+    display: flex;
+    flex-direction: column;
+    /* border: double red 1px; */
+    margin: .5em;
+    
+}
+
+.number-type-select-ctn,
+.currency-type-select-ctn {
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
+.number-type-select-ctn select,
+.currency-type-select-ctn select {
+    width: 23%;
+    height: 100%;
+    /* outline: none; */
+}
+
+.number-type-select-ctn input,
+.currency-type-select-ctn input {
+    width: 75%;
+}
+
+.sub-address-input {
+    display: flex;
+    width: 100%;
+}
+
+.name-field-ctn {
+    display: flex;
+    /* border: red dotted 1px; */
+    width: 100%;
+}
+
+.first-last-name-ctn {
+    width: 40%;
+    /* border: #2d55cc 1px dotted; */
+}
+
+.name-field-select-ctn {
+    width: 20%;
+    /* border: black 1px dashed; */
+}
+
+.name-field-select-ctn select {
+    width: 100%;
+    height: 100%;
+}
+
+.first-last-name-ctn input {
+    width: 100%;
+}
+
+/* .name-field-ctn div {
+    width: 100%;
+} */
+
+.sub-address-input input {
+    width: 33%;
+    margin: .3em .1em .3em 0;
+}
+
+input {
+    padding-left: .5em;
+}
+
+select {
+    outline: none;
+    height: 2em;
+}
+
+textarea {
+    padding: .4em .7em;
+    outline: none;
+}
+
+textarea:focus {
+    border: #4e73df 1px solid;
+    box-shadow: 2px 2px 2px -2px black;
+}
+.address-input-container div input {
+    width: 100%;
+}
+
+.details-input-container {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+p {
+    color: black ;
+}
