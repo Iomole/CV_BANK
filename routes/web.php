@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models;
+use App\Models\Cv_bank;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// All CVs
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('cv_bank', [
+        'heading' => ' CV List',
+        'cv_list' => Cv_bank::all()
+
+    ]);
+});
+
+// Single CV
+Route::get('cv_bank/{id}',function($id){
+    return view('cv', [
+        'list' => Cv_bank::find($id)
+    ]);
+
 });
