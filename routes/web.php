@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models;
 use App\Models\Cvbank;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CvController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +20,57 @@ use App\Models\Cvbank;
 
 // All CVs
 
-Route::get('/', function () {
-    return view('cv_bank', [
-        'heading' => ' CV List',
-        'cv_list' => Cvbank::all()
 
-    ]);
-});
+
+
+
+Route::get('/', [CvController::class, 'index'])->middleware('auth');
+//Route::get('/search', 'CvController@search');
+
+// Store CV
+Route::post('/cvs',[CvController::class, 'store'])->middleware('auth');
+
+
+// show create form
+Route::get('/cvs/create',[CvController::class, 'create'])->middleware('auth');
+
+// edit form
+
+Route::get('/{cv}/edit',[CvController::class, 'edit'])->middleware('auth');
+
+//update cv
+
+Route::put('/{cv}',[CvController::class, 'update'])->middleware('auth');
+
+//delete cv
+
+Route::delete('/{cv}',[CvController::class, 'destroy'])->middleware('auth');
+
+//show Register     /create form
+Route::get('/register',[UserController::class, 'create']);
+
+//create new user
+
+Route::post('/users', [UserController::class, 'store']);
+
+// Logout
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+
+
+// show login form
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// submit login form
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+
 
 // Single CV
-Route::get('cv_bank/{id}',function($id){
-    return view('cv', [
-        'list' => Cvbank::find($id)
-    ]);
+Route::get('/{cv}',[CvController::class, 'show'])->middleware('auth');
 
-});
+
+
+
+
+

@@ -13,6 +13,7 @@
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
+  --purple1:#8a496b;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #e74a3b;
@@ -24,7 +25,7 @@
   --white: #fff;
   --gray: #858796;
   --gray-dark: #5a5c69;
-  --primary: #4e73df;
+  --pr1imary: #4e73df;
   --secondary: #858796;
   --success: #1cc88a;
   --info: #36b9cc;
@@ -9940,6 +9941,14 @@ a:focus {
   background-image: linear-gradient(180deg, #f8f9fc 10%, #c2cbe5 100%);
   background-size: cover;
 }
+
+.bg-gradient-peace {
+  background-color: #8a496b;
+  background-image: linear-gradient(180deg, #8a496b 10%, #c2cbe5 100%);
+  background-size: cover;
+}
+
+
 
 .bg-gradient-dark {
   background-color: #5a5c69;

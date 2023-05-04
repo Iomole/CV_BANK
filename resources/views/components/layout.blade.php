@@ -9,9 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel=\"icon\" type=\"image/png\" href=\"{{ asset('img/techwarelogo.png') }}\">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/techwarelogo.com') }}">
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-..." crossorigin="anonymous">
 
-    <title>{{ config('Socrus', 'Socrus CRM') }}-@yield('title')</title>
+    <title>{{ config('TW_cv', 'Techware') }}-@yield('title')</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +25,7 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 
@@ -32,15 +36,18 @@
 
         <!-- Replaced the original side bar codes with the one from the index.html -->
          <!-- Sidebar -->
-         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+         <ul class="navbar-nav bg-gradient-purple sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <img src="{{ asset('img/techwarelogo.png') }}" alt="Logo" style="width: 50px; height: 50px;">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-lau1gh-wink"></i>
                     
                 </div>
+
+                
+
                 <div class="sidebar-brand-text mx-3">Techware CV Bank
                     <!-- <sup>2</sup> -->
                 </div>
@@ -70,11 +77,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>List Manager</span>
+                    <span>CV Manager</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header"> Management:</h6> -->
+
+                        
+
                         <a class="collapse-item" href="{{url('/admin/users/admin-users')}}">CV List</a>
                         <a class="collapse-item" href="/admin/accounts/admin-accounts">Add CV</a>
                        
@@ -86,9 +96,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/register">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Create User</span></a>
             </li>
 
             <!-- Removed the table item -->
@@ -119,18 +129,18 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                   <!-- <form action="/" method="get"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -279,10 +289,12 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+                        @auth
                         <li class="nav-item dropdown no-arrow">
+
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="/img/undraw_profile.svg">
                             </a>
@@ -312,7 +324,8 @@
                         </li>
 
                     </ul>
-
+                    
+                    @endauth
                 </nav>
                 <!-- End of Topbar -->
 
@@ -322,9 +335,12 @@
 
 
 <main>
-            @yield('content')
+    <x-flash-message/>
+
+            {{$slot}}
+           <!--@/yield('content')-->
             <!-- End of Main Content -->
-            @yield('dynamic_page')
+           <!-- @/yield('dynamic_page')-->
             <!-- Footer -->
 </main>
            <!-- End of Main Content -->
@@ -336,7 +352,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2022</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

@@ -1,9 +1,7 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
 @section('title'){{'CV Profile'}}@endsection
 
-
+<
          <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="create-page-header">
@@ -84,7 +82,7 @@
                     </div>
 
                     <div class="website-input-container">
-                        <label for="website-link">Attached file</label>
+                        <label for="website-link"><a href="{{$list->file ? 'storage/'.$list->file : 'No document'}}">{{$list->file}}</a></label>
                         <div>
                             <p>coming soon</p>
                         </div>
@@ -95,21 +93,26 @@
                     
                 </div>
                
-                <a href="{{url('/edit-cv/'.$list->id)}}" class="btn btn-primary btn-sm">
+                <a href="/{{$list->id}}/edit" class="btn btn-primary btn-sm">
                     Edit
                 </a>
+                <form method="POST" action="/{{$list->id}}">
+                    @csrf
+                    @method('DELETE')
+                    
+                    <button class="btn btn-danger btn-sm" >Delete</button>
+            
+                </form>
+    
                 
             </form>
-        </div>
+
+                   </div>
     </div>
 
 </div>
 <!-- /.container-fluid -->
-
 </div>
 <!-- End of Main Content -->
 
-
-
-
-@endsection
+</x-layout>

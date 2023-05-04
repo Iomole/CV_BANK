@@ -1,11 +1,7 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
 @section('title'){{'CVs'}}@endsection
 
 
-
-<h1>Techware CV Bank</h1>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="page-header">
@@ -17,7 +13,7 @@
             </div>
             <div class="page-header-create-button">
                 <button class="page-header-btn-type">
-                    <a href="{{url('/accounts/add-account')}}">
+                    <a href="{{url('/cvs/create')}}">
                         <span class="fas fa-plus"></span> 
                         <span>Add CV</span>
                     </a>
@@ -25,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="search-container">
+   <!-- <div class="search-container">
         <div class="search-row">
             <div class="input-group-search">
                 <div class="input-group-btn-left-dropdown">
@@ -46,8 +42,17 @@
                     </button>
                 </div>
             </div>
+            
         </div>
-    </div>
+    </div>-->
+
+    
+
+
+                    
+    <!--search-->
+    @include('partials._search')
+
     <div class="list-container">
         <div class="list-container-table">  
             <table class="account-list-table">
@@ -66,34 +71,34 @@
                 <tbody>
                     @unless(count($cv_list) == 0)
 
-
-                    @foreach($cv_list as $list)
+                    
+   
+                @foreach($cv_list as $list)
 
                     <tr>
-                        <td><a href="/cv_bank/{{$list['id']}}">{{$list['name']}} </a></td>
-                        <td>{{$list['focus']}}</td>
+                        <td><a href="/{{$list->id}}">{{$list->name}} </a></td>
+                        <td>{{$list->focus}}</td>
                         <td style="text-align:center;">{{$list['years']}}</td>
-                        <td>{{$list['status']}}</td>
-                        <td>{{$list['phone']}}</td>
+                        <td>{{$list->status}}</td>
+                        <td>{{$list->phone}}</td>
 
                         <td><a href="mailto:{{$list->email}}">{{$list->email}}</a></td>
-                        <td>{{$list['status']}}</td>
+                        <td><a href="{{$list->file ? 'storage/'.$list->file : 'No document'}}">{{$list->file}}  </a></td>
                             
                     </tr>
-                        @endforeach
+                 @endforeach
                     @else
                         <p>There is no record in the database!</p>
                     @endunless
 
-
-                    
-
                 </tbody>
             </table>
+            <div class="mt-6 p-4">
+                {{$cv_list->links()}}
+            </div>
             <div>
-                <span>
-                    <a href="#">show more</a> 
-                </span>
+                
+                
             </div>
         </div>
     </div>
@@ -101,7 +106,9 @@
 <!-- /.container-fluid -->
 
 </div>
+
 <!-- End of Main Content -->
 
-@endsection
+</x-layout>
+
 
