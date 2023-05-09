@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Cvbanks;
 use Illuminate\Http\Request;
+use App\Notifications\emailNotification;
 
 class CvController extends Controller
 {
@@ -44,6 +46,18 @@ class CvController extends Controller
         }
         Cvbanks::create($formFields);
 
+
+         // Send email notification for CV added
+
+         $Nusers = User::where('role', 'admin')->get();
+
+         foreach($Nusers as $user2){
+                 $messages['hi'] = 'Attention!';
+                 $messages['wish'] = 'A new CV has been added to this app';
+                 $user2->notify(new emailNotification($messages));
+         }
+
+
         return redirect('/')->with('message', 'CV added successfully!');
 
     }
@@ -59,6 +73,18 @@ class CvController extends Controller
             $formFields['file'] = $request->file('file')->store('files', 'public');
         }
         $cv->update($formFields);
+
+
+         // Send email notification for CV update
+
+         $Nusers = User::where('role', 'admin')->get();
+
+         foreach($Nusers as $user2){
+                 $messages['hi'] = 'Attention!';
+                 $messages['wish'] = 'An existing CV has been updated!';
+                 $user2->notify(new emailNotification($messages));
+         }
+
 
         return back()->with('message', 'CV updated successfully!');
 

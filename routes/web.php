@@ -5,6 +5,7 @@ use App\Models\Cvbank;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\emailNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,7 @@ Route::put('/{cv}',[CvController::class, 'update'])->middleware('auth');
 Route::delete('/{cv}',[CvController::class, 'destroy'])->middleware('auth');
 
 //show Register     /create form
-Route::get('/register',[UserController::class, 'create']);
+Route::get('/register',[UserController::class, 'create'])->middleware(['auth', 'isAdmin']);
 
 //create new user
 

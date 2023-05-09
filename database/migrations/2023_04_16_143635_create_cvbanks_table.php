@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('cvbanks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_role')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_role')->nullable();
             $table->string('name');
             $table->string('focus');
             $table->string('years')->nullable();

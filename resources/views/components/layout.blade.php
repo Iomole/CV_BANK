@@ -94,12 +94,17 @@
             </li>
             <hr class="sidebar-divider">
 
+            <!-- Check id admin -->
+
+            @if(Auth::check() && Auth::user()->role=='admin')
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="/register">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Create User</span></a>
             </li>
+            @endif
 
             <!-- Removed the table item -->
 
@@ -236,9 +241,11 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
+                                        
                                         <img class="rounded-circle" src="img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
+                                        
                                     </div>
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
@@ -294,6 +301,7 @@
 
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="/img/undraw_profile.svg">

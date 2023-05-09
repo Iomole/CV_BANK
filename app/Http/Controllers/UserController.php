@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use App\Notifications\emailNotification;
 
 class UserController extends Controller
 {
@@ -27,12 +30,27 @@ class UserController extends Controller
 
         // create user 
         $user = User::create($formFields);
+        //$users = User::where('role', '=', 'Admin')->select('email')->get();
+        $users = User::all();
+
+
+        // Send email notification
+
+        $Nusers = User::where('role', 'admin')->get();
+
+        foreach($Nusers as $user2){
+                $messages['hi'] = 'Attention!';
+                $messages['wish'] = 'A new user has been created for this APP';
+                $user2->notify(new emailNotification($messages));
+        }
 
         //login
 
-        auth()->login($user);
+        //auth()->login($user);
 
         return redirect('/')->with('message', 'User created and logged in!');
+         
+
     }
 
     public function logout(Request $request){
