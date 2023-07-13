@@ -86,7 +86,7 @@
                         
 
                         <a class="collapse-item" href="{{url('/admin/users/admin-users')}}">CV List</a>
-                        <a class="collapse-item" href="/admin/accounts/admin-accounts">Add CV</a>
+                        <a class="collapse-item" href="{{url('/cvs/create')}}">Add CV</a>
                        
                         <!-- Removed the login, Register and forgot password links -->
                     </div>
@@ -103,6 +103,17 @@
                 <a class="nav-link" href="/register">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Create User</span></a>
+            </li>
+            @endif
+
+            <!--User list->
+                 @if(Auth::check() && Auth::user()->role=='admin')
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="/users">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>View Users</span></a>
             </li>
             @endif
 

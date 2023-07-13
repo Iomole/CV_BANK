@@ -11,7 +11,7 @@
                         <a href="contacts.html">CVs</a>
                         <span class="fas fa-angle-right">
                         </span>
-                         Edit: {{$cv->name}} cv
+                         Edit: {{$cv->name}} ({{$cv->focus}})
                     </h3>
                 </div>
                 <button  form="createCv-form" type="submit" class="btn btn-purple1 btn-sm" name="submit" value="submit" >Update Cv </button>

@@ -11,6 +11,27 @@ use App\Notifications\emailNotification;
 
 class UserController extends Controller
 {
+    
+    //Show all Users
+    public function users() {
+        return view('users.cvusers', [
+            'heading' => ' User List',
+            'user_list' => User::latest()->filter(request(['search']))->simplePaginate(5)
+    
+        ]);
+
+    }
+
+    // Show single user
+    public function show(User $user){
+
+        return view('users.show', [
+            'list' => $user
+        ]);
+
+    }
+
+    
     // show Register/create form
     public function create(){
             return view('users.register');
@@ -22,7 +43,8 @@ class UserController extends Controller
         $formFields = $request->validate([
             'name' =>['required', 'min:3'],
             'email' => ['required','email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:8'
+            'password' => 'required|confirmed|min:8',
+            
         ]);
 
         // hash password

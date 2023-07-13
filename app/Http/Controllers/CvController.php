@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Cvbanks;
 use Illuminate\Http\Request;
+use App\Exports\CvDataExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Notifications\emailNotification;
+//use App\Exports\CvDataExport;
 
 class CvController extends Controller
 {
@@ -96,7 +100,7 @@ class CvController extends Controller
 
     public function edit(Cvbanks $cv){
 
-        return view('cvs.edit', ['cv'=> $cv]);
+        return view('Cvs.edit', ['cv'=> $cv]);
 
 
     }
@@ -109,6 +113,31 @@ class CvController extends Controller
         return redirect('/')->with('message', 'Cv deleted successfully!');
 
 
+    }
+
+    // View function pdf
+    public function viewPDF(){
+        $cvs = Cvbanks::all();
+        $pdf = PDF::loadView('pdf.cvsdetails', array('cvs' => $cvs))
+        ->setPaper('a4', 'portrait');
+        return $pdf->stream();
+    }
+
+    // download pdf 
+
+    public function downloadPDF(){
+        $cvs = Cvbanks::all();
+
+        $pdf = PDF :: loadView('pdf.cvsdetails',array('cv' => $cvs))
+        ->setPaper('a4', 'portrait');
+
+        return $pdf->download('cv-details.pdf');
+    }
+
+     // export Excel
+     public function exportExcel(){
+        
+        return Excel::download(new CvDataExport, 'cvs-data.xlsx');
     }
 
     

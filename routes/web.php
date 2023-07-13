@@ -45,6 +45,10 @@ Route::put('/{cv}',[CvController::class, 'update'])->middleware('auth');
 
 //delete cv
 
+// CV export
+Route::post('cvs/export-excel', [CvController::class, 'exportExcel'])->name('cvs.download-excel')->middleware('auth');
+
+
 Route::delete('/{cv}',[CvController::class, 'destroy'])->middleware('auth');
 
 //show Register     /create form
@@ -54,10 +58,16 @@ Route::get('/register',[UserController::class, 'create'])->middleware(['auth', '
 
 Route::post('/users', [UserController::class, 'store']);
 
+// Display all users
+Route::get('/users', [UserController::class, 'users'])->middleware('auth', 'isAdmin');
+
+//Display single user
+// Single CV
+Route::get('/{user}',[CvController::class, 'show'])->middleware('auth', 'isAdmin');
+
+
 // Logout
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
-
-
 
 // show login form
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');

@@ -19,6 +19,11 @@
                     </a>
                 </button>
             </div>
+
+            <form action="{{route('cvs.download-excel')}}" method="POST" target="__blank">
+                @csrf
+           <!-- <button type="submit" class="btn btn-primary btn-sm" name="submit" value="submit" > Export Excel </button>-->
+            </form>
         </div>
     </div>
    <!-- <div class="search-container">
@@ -68,6 +73,8 @@
                         <th>PHONE</th>
                         <th>EMAIL</th>
                         <th>FILE</th>
+                        <th>UPDATED</th>
+                        
                     </tr>
                 </thead>
 
@@ -84,10 +91,17 @@
                         <td style="text-align:center;">{{$list['years']}}</td>
                         <td>{{$list->status}}</td>
                         <td>{{$list->phone}}</td>
-
                         <td><a href="mailto:{{$list->email}}">{{$list->email}}</a></td>
-                        <td><a href="{{$list->file ? 'storage/'.$list->file : 'No document'}}">{{$list->file}}  </a></td>
-                            
+                        <td>
+                            @if ($list->file)
+                              <a href="storage/{{$list->file}}"><i class="far fa-file-alt"></i></a>
+                            @else
+                              No document
+                            @endif
+                          </td>
+                        
+                        <td style="text-align:center;">{{$list['updated_at']}}</td>
+                             
                     </tr>
                  @endforeach
                     @else
